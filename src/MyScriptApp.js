@@ -29,8 +29,8 @@ const MyScriptApp = () => {
         server: {
           scheme: "https",
           host: "webdemoapi.myscript.com",
-          applicationKey: "86b52209-107c-4887-a8ed-a12986edd7de",
-          hmacKey: "be6f326e-f995-4aed-b784-e71da6d7492a",
+          applicationKey: "place app key here",
+          hmacKey: "place hmac key here",
         },
       },
     });
