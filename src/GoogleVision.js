@@ -105,12 +105,13 @@ const GoogleVision = () => {
       }}
     >
       <div style={{ display: "flex", flexDirection: "column" }}>
+        <p>Hand Written text capture using Camera and intergration with Open AI</p>
         {/* Webcam View */}
         <Webcam
           audio={false}
           ref={webcamRef}
           screenshotFormat="image/jpeg"
-          width={300}
+          width={500}
           style={{ border: "1px solid black", marginBottom: "10px" }}
         />
 
