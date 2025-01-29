@@ -1,0 +1,137 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* tabs */
+
+/* Tab container */
+.tabs {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  border-bottom: 2px solid #ddd;
+}
+
+/* Tab items */
+.tabs li {
+  padding: 12px 20px;
+  cursor: pointer;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  margin-right: 5px;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+}
+
+.tabs li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 12px;
+}
+
+/* Active Tab */
+.tabs li.active {
+  background: #ffffff;
+  border-top: 2px solid #007BFF;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: none;
+  color: #007BFF;
+}
+
+/* Tab Content */
+.tab-content {
+  display: none;
+  padding: 15px;
+  border: 1px solid #ddd;
+  background: #ffffff;
+}
+
+/* Show active tab */
+.tab-content.active {
+  display: block;
+}
+
+/* column container */
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Left Column - Fixed */
+.left-column {
+  width: 30%;
+  background: #f4f4f4;
+  padding: 20px;
+  position: fixed;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Right Column - Scrollable */
+.right-column {
+  margin-left: 30%; /* Same as left column width */
+  width: 70%;
+  overflow-y: auto;
+  height: 100vh;
+  padding: 20px;
+  background: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-column {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .right-column {
+    width: 100%;
+    margin-left: 0;
+    height: calc(100vh - 100px);
+  }
+}
+
+/* Column container */
