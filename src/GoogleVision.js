@@ -27,7 +27,7 @@ const GoogleVision = () => {
     // Remove Base64 headers from the image
     const base64Image = image.split(",")[1];
 
-    const visionAPIKey = "place vision apiu key here"; // Replace with your API Key
+    const visionAPIKey = "AIzaSyBXN8BZhwNEV-cDD-SoG-_5MsrEGC-uacE"; // Replace with your API Key
 
     try {
       const response = await axios.post(
