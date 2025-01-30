@@ -105,7 +105,7 @@ const GoogleVision = () => {
       }}
     >
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <p>Hand Written text capture using Camera and intergration with Open AI</p>
+        <p>Hand written text capture using cameraa</p>
         {/* Webcam View */}
         <Webcam
           audio={false}
@@ -172,7 +172,7 @@ const GoogleVision = () => {
           <div>
             {true && (
               <>
-                <h3>Open AI Response :</h3>
+                <h3>Our Response :</h3>
                 <textarea
                   value={responseText}
                   rows="10"

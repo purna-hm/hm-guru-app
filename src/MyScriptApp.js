@@ -90,7 +90,7 @@ const MyScriptApp = () => {
   return (
     <>
       <h2 style={{ textAlign: "center" }}>
-        Hand written text integration with Open AI
+        Hand written text integration
       </h2>
       <div
         style={{
@@ -114,9 +114,9 @@ const MyScriptApp = () => {
             <h3>Captured Text:</h3>
             <p>{capturedText}</p>
           </div>
-          <button onClick={sendToOpenAI}>Send to OpenAI</button>
+          <button onClick={sendToOpenAI}>Send to tutor</button>
           <div>
-            <h3>OpenAI Response:</h3>
+            <h3>Our Response:</h3>
             <p>{responseText}</p>
           </div>
         </div>
