@@ -112,7 +112,8 @@ const MyScriptApp = () => {
         >
           <div>
             <h3>Captured Text:</h3>
-            <p>{capturedText}</p>
+            {/* <p>{capturedText}</p> */}
+            <textarea value={capturedText} onChange={e=>setCapturedText(e.target.value)} />
           </div>
           <button onClick={sendToOpenAI}>Send to tutor</button>
           <div>
