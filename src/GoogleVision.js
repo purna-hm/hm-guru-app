@@ -77,7 +77,7 @@ const GoogleVision = () => {
           {
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer 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`, // Replace with your OpenAI API Key
+              Authorization: `Bearer ${process.env.REACT_APP_API_AI_KEY}`, // Replace with your OpenAI API Key
             },
           }
         );

@@ -73,7 +73,7 @@ const MyScriptApp = () => {
           {
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer `, // Replace with your OpenAI API Key
+              Authorization: `Bearer ${process.env.REACT_APP_API_AI_KEY}`, // Replace with your OpenAI API Key
             },
           }
         );
