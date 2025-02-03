@@ -63,7 +63,7 @@
 .tabs li a {
   text-decoration: none;
   color: #333;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 /* Active Tab */
@@ -93,7 +93,7 @@
 
 .container {
   display: flex;
-  height: 375px;
+  height: 700px;
 }
 
 /* Left Column - Fixed */
@@ -104,7 +104,7 @@
   position: fixed;
   height: 100%;
   overflow: hidden;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 /* Right Column - Scrollable */
@@ -115,7 +115,7 @@
   height: 100%;
   padding: 0px 20px 20px 20px;
   background: #fff;
-  font-size: 12px !important;
+  font-size: 16px !important;
   text-align: right;
 }
 .no-space {
@@ -124,7 +124,7 @@
 .left-column button, .right-column button {
     border-radius: 8px;
     border: 1px solid;
-    font-size: 12px;
+    font-size: 16px;
     font-family: "ElzaText-Regular", sans-serif;
     font-weight: 500;
     text-decoration: none;
@@ -189,15 +189,16 @@
 /* Custom Text Area */
 .custom-textarea {
   width: 80%;
-  height: 100px;
+  height: 180px;
   padding: 15px;
   border: 1px solid #ccc;
   border-radius: 8px;
   resize: none;
-  font-size: 12px;
+  font-size: 16px;
   outline: none;
   box-sizing: border-box;
   font-family: "ElzaText-Regular", sans-serif;
+  margin-top: 20px
 }
 
 /* Bottom-Right Positioned Icon */

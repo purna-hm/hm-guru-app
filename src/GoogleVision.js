@@ -108,7 +108,7 @@ const GoogleVision = () => {
           audio={false}
           ref={webcamRef}
           screenshotFormat="image/jpeg"
-          width={400}
+          width={500}
           className="webcam-container"
           // style={{ border: "1px solid black", marginBottom: "10px" }}
         />
