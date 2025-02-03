@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<OpenCV />} />
+          <Route index element={<GoogleVision />} />
           <Route path="myscript" element={<MyScriptApp />} />
           <Route path="googlevision" element={<GoogleVision />} />
           <Route path="opencv" element={<OpenCV />} />
