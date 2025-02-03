@@ -11,9 +11,9 @@ const Layout = () => {
           <li>
             <Link to="/myscript">Digital Capture</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/opencv">Open CV</Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
 

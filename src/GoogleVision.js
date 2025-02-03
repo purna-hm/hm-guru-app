@@ -1,12 +1,14 @@
 import React, { useRef, useState } from "react";
 import Webcam from "react-webcam";
 import axios from "axios";
+import DotLoading from "./DotLoading";
 
 const GoogleVision = () => {
   const webcamRef = useRef(null); // Reference to the webcam
   const [image, setImage] = useState(null); // Captured image
   const [handwrittenText, setHandwrittenText] = useState(""); // Extracted text
   const [loading, setLoading] = useState(false); // Loading state
+  const [ailoading, setAILoading] = useState(false); // Loading state
   const [responseText, setResponseText] = useState("");
 
   // Function to capture the image
@@ -63,6 +65,7 @@ const GoogleVision = () => {
 
   const sendToOpenAI = async () => {
     if (handwrittenText) {
+      setAILoading(true);
       try {
         const response = await axios.post(
           "https://api.openai.com/v1/chat/completions",
@@ -85,6 +88,8 @@ const GoogleVision = () => {
       } catch (error) {
         console.error("Error calling OpenAI API:", error);
         setResponseText("Sorry, there was an error processing your request.");
+      } finally {
+        setAILoading(false);
       }
     } else {
       console.log("No captured text to send.");
@@ -92,29 +97,21 @@ const GoogleVision = () => {
   };
 
   return (
-    <div
-      style={{
-        padding: "20px",
-        textAlign: "center",
-        display: "flex",
-        flexDirection: "row",
-        gap: "60px",
-        margin: "auto",
-        justifyContent: "center",
-        background: "rgb(237, 230, 226)",
-      }}
-    >
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <p>Hand written text capture using cameraa</p>
-        {/* Webcam View */}
+    <div className="container">
+      {/* Left Column - Fixed */}
+      <div className="left-column">
+        {/* <h2>HM Guru!</h2>
+        <p>Ask our Guru for anything!</p> */}
+        {/* <p className="no-space">Capturing handwritten text from a camera and solve problems</p> */}
+
         <Webcam
           audio={false}
           ref={webcamRef}
           screenshotFormat="image/jpeg"
-          width={500}
-          style={{ border: "1px solid black", marginBottom: "10px" }}
+          width={400}
+          className="webcam-container"
+          // style={{ border: "1px solid black", marginBottom: "10px" }}
         />
-
         <div>
           {/* Button to Capture Image */}
           <button onClick={captureImage} style={{ marginRight: "10px" }}>
@@ -130,23 +127,53 @@ const GoogleVision = () => {
             {loading ? "Processing..." : "Extract Handwritten Text"}
           </button>
         </div>
+      </div>
+      
+      {/* Right Column - Scrollable */}
+      <div className="right-column">
+        {/* Webcam View */}
+        {/* <Webcam
+          audio={false}
+          ref={webcamRef}
+          screenshotFormat="image/jpeg"
+          width={400}
+          className="webcam-container"
+          // style={{ border: "1px solid black", marginBottom: "10px" }}
+        />
+        <div>
+          
+          <button onClick={captureImage} style={{ marginRight: "10px" }}>
+            Capture Image
+          </button>
+
+          <button
+            onClick={processImage}
+            disabled={loading}
+            sx={{ background: "rgb(98, 91, 44" }}
+          >
+            {loading ? "Processing..." : "Extract Handwritten Text"}
+          </button>
+        </div> */}
 
         {/* Display Captured Image */}
         {image && (
           <div>
-            <h3>Captured Image:</h3>
+            {/* <h3>Captured Image:</h3> */}
             <img
               src={image}
               alt="Captured"
+              className="webcam-container"
               style={{ maxWidth: "300px", marginTop: "10px" }}
             />
           </div>
         )}
-      </div>
+    
+       
+
       {/* Display Extracted Text */}
       {handwrittenText && (
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div>
+        <div>
+          {/* <div>
             <h3>Extracted Text:</h3>
             <textarea
               value={handwrittenText}
@@ -155,10 +182,35 @@ const GoogleVision = () => {
               onChange={(e) => {
                 setHandwrittenText(e.target.value);
               }}
-              style={{ width: "100%", marginTop: "10px" }}
+              style={{ width: "70%", marginTop: "10px" }}
             />
-          </div>
-          <div>
+          </div> */}
+           {/* border Textarea  */}
+            <div class="textarea-container">
+                <textarea className="custom-textarea" 
+                value={handwrittenText}
+                onChange={(e) => {
+                  setHandwrittenText(e.target.value);
+                }}
+                />
+                <div className={`icon-container ${handwrittenText ==='No text detected' ? "disabled" : "active"}`}  onClick={() => {
+                sendToOpenAI();
+              }}>
+                    {/* SVG Arrow Icon */}
+                    {/* <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M12 5L19 12L12 19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg> */}
+
+                <svg width="32" height="30" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="Arrows">
+                <path id="Vector" d="M2.66663 4.53076V28.8271L29.3333 16.6789L2.66663 4.53076ZM5.33329 8.70669L22.8359 16.6789L5.33329 24.6511V18.3345L17.3333 16.6789L5.33329 15.0233V8.70669Z" fill="#F3F4F5"/>
+                </g>
+                </svg>
+
+                </div>
+            </div>
+      {/* border Textarea  */}
+          {/* <div>
           
             <button
             disabled = {handwrittenText ==='No text detected'}
@@ -168,22 +220,26 @@ const GoogleVision = () => {
             >
               Get Response
             </button>
-          </div>
-          <div>
-            {true && (
+          </div> */}
+          {ailoading && <DotLoading />}
+          { !ailoading && (<div class="textarea-container">
+            {responseText && (
               <>
-                <h3>Our Response :</h3>
+                {/* <h3>Our Response :</h3> */}
                 <textarea
+                  className="custom-textarea"
                   value={responseText}
-                  rows="10"
-                  cols="50"
-                  style={{ width: "100%", marginTop: "10px" }}
+                  disabled={true}
+                  // rows="10"
+                  // cols="50"
+                  // style={{ width: "70%", marginTop: "10px" }}
                 />
               </>
             )}
-          </div>
+          </div>) }
         </div>
       )}
+      </div>  
     </div>
   );
 };
